@@ -28,16 +28,16 @@ struct ContentView: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button(action: { isShowingFilePicker = true }) {
-                    Label("Load video", systemImage: "plus")
-                }
-            }
-            ToolbarItem(placement: .secondaryAction) {
+            ToolbarItemGroup(placement: .navigation) {
                 Button(action: { isShowingHelp = true }) {
                     Image(systemName: "questionmark.circle")
                 }
                 .help("Show help")
+            }
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: { isShowingFilePicker = true }) {
+                    Label("Load video", systemImage: "plus")
+                }
             }
         }
         .fileImporter(
