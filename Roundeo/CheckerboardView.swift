@@ -18,6 +18,7 @@ struct CheckerboardView: View {
                         width: squareSize,
                         height: squareSize
                     )
+                    // Light checkerboard squares
                     context.fill(Path(rect), with: .color(Color(white: 0.18)))
                 }
             }

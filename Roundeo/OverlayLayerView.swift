@@ -37,14 +37,14 @@ struct OverlayLayerView: View {
                         p.move(to: CGPoint(x: videoFrame.midX, y: videoFrame.minY))
                         p.addLine(to: CGPoint(x: videoFrame.midX, y: videoFrame.maxY))
                     }
-                    .stroke(Color.accentColor, lineWidth: 1)
+                    .stroke(DesignSystem.Colors.accent, lineWidth: 1)
                 }
                 if isSnappedV {
                     Path { p in
                         p.move(to: CGPoint(x: videoFrame.minX, y: videoFrame.midY))
                         p.addLine(to: CGPoint(x: videoFrame.maxX, y: videoFrame.midY))
                     }
-                    .stroke(Color.accentColor, lineWidth: 1)
+                    .stroke(DesignSystem.Colors.accent, lineWidth: 1)
                 }
             }
 
@@ -114,10 +114,14 @@ struct ResizeHandle: View {
     @Binding var dragStartScale: CGFloat
 
     var body: some View {
-        Circle()
-            .fill(Color.blue)
-            .frame(width: 10, height: 10)
-            .position(position)
+        ZStack {
+            Circle()
+                .fill(DesignSystem.Colors.accentLight)
+            Circle()
+                .stroke(Color.black, lineWidth: 1)
+        }
+        .frame(width: 10, height: 10)
+        .position(position)
             .gesture(
                 DragGesture()
                     .onChanged { value in

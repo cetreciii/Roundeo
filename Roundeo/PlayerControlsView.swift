@@ -6,16 +6,16 @@ struct PlayerControlsView: View {
     @ObservedObject var viewModel: VideoViewModel
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: DesignSystem.Spacing.md) {
             Button(action: { viewModel.togglePlayPause() }) {
                 Image(systemName: viewModel.isPlaying ? "pause.fill" : "play.fill")
                     .font(.body)
-                    .frame(width: 20)
+                    .frame(width: DesignSystem.Sizing.iconStandard)
             }
             .buttonStyle(.plain)
 
             Text(formatTime(viewModel.currentTime))
-                .font(.caption.monospacedDigit())
+                .font(DesignSystem.Typography.caption.monospacedDigit())
                 .foregroundStyle(.secondary)
                 .frame(width: 44, alignment: .trailing)
 
@@ -28,9 +28,10 @@ struct PlayerControlsView: View {
             ) { editing in
                 viewModel.isSeeking = editing
             }
+            .accentColor(DesignSystem.Colors.accent)
 
             Text(formatTime(viewModel.duration))
-                .font(.caption.monospacedDigit())
+                .font(DesignSystem.Typography.caption.monospacedDigit())
                 .foregroundStyle(.secondary)
                 .frame(width: 44, alignment: .leading)
         }
@@ -64,25 +65,25 @@ struct BottomBarView: View {
     @ObservedObject var viewModel: VideoViewModel
 
     var body: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: DesignSystem.Spacing.lg) {
             // Presets
-            HStack(spacing: 6) {
+            HStack(spacing: DesignSystem.Spacing.xs) {
                 ForEach(cornerRadiusPresets, id: \.name) { preset in
                     let target = preset.fraction * viewModel.maxRadius
                     let isActive = abs(viewModel.cornerRadius - target) < 1
 
                     Button(preset.name) {
-                        withAnimation(.easeInOut(duration: 0.2)) {
+                        withAnimation(DesignSystem.Animations.standard) {
                             viewModel.cornerRadius = target
                         }
                     }
                     .buttonStyle(.plain)
-                    .font(.caption.weight(isActive ? .bold : .regular))
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
+                    .font(DesignSystem.Typography.caption.weight(isActive ? .bold : .regular))
+                    .padding(.horizontal, DesignSystem.Spacing.md)
+                    .padding(.vertical, DesignSystem.Spacing.xs)
                     .background(
                         Capsule()
-                            .fill(isActive ? Color.accentColor : Color.white.opacity(0.08))
+                            .fill(isActive ? DesignSystem.Colors.accent : Color.white.opacity(0.08))
                     )
                     .foregroundStyle(isActive ? .white : .secondary)
                 }
@@ -94,6 +95,7 @@ struct BottomBarView: View {
             // Slider + value
             Slider(value: $viewModel.cornerRadius, in: 0...viewModel.maxRadius)
                 .frame(minWidth: 120)
+                .accentColor(DesignSystem.Colors.accent)
 
             TextField("", value: $viewModel.cornerRadius, format: .number.precision(.fractionLength(0)))
                 .textFieldStyle(.roundedBorder)
@@ -101,7 +103,7 @@ struct BottomBarView: View {
                 .multilineTextAlignment(.trailing)
 
             Text("px")
-                .font(.caption)
+                .font(DesignSystem.Typography.caption)
                 .foregroundStyle(.tertiary)
 
             Divider()
@@ -109,7 +111,7 @@ struct BottomBarView: View {
 
             // Crop button
             if viewModel.isCropMode {
-                HStack(spacing: 6) {
+                HStack(spacing: DesignSystem.Spacing.xs) {
                     Button("Apply") {
                         viewModel.isCropMode = false
                     }
@@ -134,22 +136,22 @@ struct BottomBarView: View {
 
             // Frame overlay button
             if viewModel.overlayImage != nil {
-                HStack(spacing: 6) {
+                HStack(spacing: DesignSystem.Spacing.xs) {
                     Image(systemName: "iphone")
-                        .font(.caption)
+                        .font(DesignSystem.Typography.caption)
                     Text(viewModel.overlayURL?.deletingPathExtension().lastPathComponent ?? "Frame")
-                        .font(.caption)
+                        .font(DesignSystem.Typography.caption)
                         .lineLimit(1)
                         .frame(maxWidth: 80)
                     Button(action: { viewModel.removeOverlay() }) {
                         Image(systemName: "xmark.circle.fill")
-                            .font(.caption)
+                            .font(DesignSystem.Typography.caption)
                     }
                     .buttonStyle(.plain)
                     .foregroundStyle(.secondary)
                 }
-                .padding(.horizontal, 10)
-                .padding(.vertical, 5)
+                .padding(.horizontal, DesignSystem.Spacing.md)
+                .padding(.vertical, DesignSystem.Spacing.xs)
                 .background(Capsule().fill(Color.white.opacity(0.08)))
             } else {
                 Button(action: { viewModel.pickOverlay() }) {
@@ -165,7 +167,7 @@ struct BottomBarView: View {
             // Export button
             Button(action: { viewModel.exportVideo() }) {
                 if viewModel.isExporting {
-                    HStack(spacing: 6) {
+                    HStack(spacing: DesignSystem.Spacing.xs) {
                         ProgressView()
                             .controlSize(.small)
                         Text("\(Int(viewModel.exportProgress * 100))%")

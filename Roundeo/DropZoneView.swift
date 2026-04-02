@@ -5,17 +5,17 @@ struct DropZoneView: View {
     let onBrowse: () -> Void
 
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: DesignSystem.Spacing.lg) {
             Image(systemName: "rectangle.roundcorners.fill")
                 .font(.system(size: 56))
                 .foregroundStyle(isDragTargeted ? .white : .secondary)
 
             Text("Drop a video here")
-                .font(.title2.weight(.medium))
+                .font(DesignSystem.Typography.heading2)
                 .foregroundStyle(isDragTargeted ? .white : .secondary)
 
             Text("or")
-                .font(.caption)
+                .font(DesignSystem.Typography.caption)
                 .foregroundStyle(.tertiary)
 
             Button("Browse Files", action: onBrowse)
@@ -24,14 +24,15 @@ struct DropZoneView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background {
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: DesignSystem.CornerRadius.xl)
                 .strokeBorder(
-                    style: StrokeStyle(lineWidth: 2, dash: [8, 4])
+                    style: StrokeStyle(lineWidth: DesignSystem.Borders.medium, dash: [8, 4])
                 )
-                .foregroundStyle(isDragTargeted ? Color.accentColor : Color.white.opacity(0.15))
-                .padding(20)
+                .foregroundStyle(isDragTargeted ? DesignSystem.Colors.accent : Color.white.opacity(0.15))
+                .padding(DesignSystem.Spacing.xl)
         }
-        .background(Color(white: 0.12))
-        .animation(.easeInOut(duration: 0.15), value: isDragTargeted)
+        .background(DesignSystem.Colors.canvasBackground)
+        .animation(DesignSystem.Animations.quick, value: isDragTargeted)
+        .accentColor(DesignSystem.Colors.accent)
     }
 }

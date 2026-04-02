@@ -16,6 +16,7 @@ struct ContentView: View {
                 isDragTargeted: isDragTargeted,
                 onBrowse: { isShowingFilePicker = true }
             )
+            .accentColor(DesignSystem.Colors.accent)
             .onDrop(of: [.movie, .quickTimeMovie, .mpeg4Movie], isTargeted: $isDragTargeted) { providers in
                 loadVideoFromDrop(providers: providers)
                 return true
@@ -81,6 +82,7 @@ struct ContentView: View {
             .keyboardShortcut("?", modifiers: [.command])
             .hidden()
         )
+        .accentColor(DesignSystem.Colors.accent)
     }
 
     private func loadVideoFromDrop(providers: [NSItemProvider]) {

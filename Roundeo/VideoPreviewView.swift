@@ -26,7 +26,7 @@ struct VideoPreviewView: View {
 
                 ZStack {
                     // Dark canvas
-                    Color(white: 0.12)
+                    DesignSystem.Colors.canvasBackground
 
                     // Checkerboard at video rect (shows through rounded corners)
                     CheckerboardView()
@@ -99,11 +99,15 @@ struct VideoPreviewView: View {
             y: frame.minY + 20
         )
 
-        Circle()
-            .fill(Color.yellow)
-            .frame(width: handleSize, height: handleSize)
-            .shadow(color: .black.opacity(0.4), radius: 3)
-            .position(handlePos)
+        ZStack {
+            Circle()
+                .fill(DesignSystem.Colors.accent)
+            Circle()
+                .stroke(Color.black, lineWidth: 1.5)
+        }
+        .frame(width: handleSize, height: handleSize)
+        .shadow(color: .black.opacity(0.4), radius: 3)
+        .position(handlePos)
             .gesture(
                 DragGesture()
                     .onChanged { value in

@@ -7,10 +7,10 @@ struct SettingsView: View {
         Form {
             Section("Onboarding") {
                 HStack {
-                    VStack(alignment: .leading, spacing: 2) {
+                    VStack(alignment: .leading, spacing: DesignSystem.Spacing.xs) {
                         Text("Show onboarding on next launch")
                         Text("The welcome guide will appear again when you reopen the app.")
-                            .font(.caption)
+                            .font(DesignSystem.Typography.caption)
                             .foregroundColor(.secondary)
                     }
                     Spacer()
@@ -24,7 +24,7 @@ struct SettingsView: View {
         }
         .formStyle(.grouped)
         .frame(width: 400)
-        .padding()
+        .padding(DesignSystem.Spacing.lg)
     }
 }
 
