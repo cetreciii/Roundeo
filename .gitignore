@@ -1,0 +1,53 @@
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcworkspace/xcuserdata/
+xcuserdata/
+
+# Build
+*.o
+*.a
+*.so
+*.dylib
+*.deb
+*.rpm
+
+# Swift Package Manager
+.build/
+.swiftpm/
+*.xcodeproj/
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+
+# Temporary files
+*.tmp
+*.temp
+*.log
