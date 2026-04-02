@@ -14,7 +14,7 @@ A macOS app that adds rounded corners to your videos, crops them, and exports wi
 - **Crop** - Interactively crop the video to any region with draggable corner handles. The preview updates live.
 - **Drag and drop** - Drop a video file directly into the window to get started.
 - **Live preview** - See rounded corners and crop in real time; checkerboard background shows transparent areas.
-- **Radius presets** - Quick presets (Subtle, Medium, Large, Pill) or fine-tune with the slider, text field, or the on-canvas yellow drag handle.
+- **Radius presets** - Quick presets (Subtle, Medium, Large, Pill) or fine-tune with the slider, text field, or the on-canvas green drag handle.
 - **PNG overlay** - Add a device frame (iPhone, iPad, etc.) as a PNG overlay. Drag to reposition with automatic center snapping and resize with corner handles.
 - **Any aspect ratio** - Handles horizontal, vertical, and square videos correctly.
 
