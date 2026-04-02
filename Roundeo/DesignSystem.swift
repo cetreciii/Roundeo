@@ -7,11 +7,11 @@ struct DesignSystem {
     // MARK: - Colors
 
     struct Colors {
-        /// Primary accent color - dark forest green
-        static let accent = Color(hex: "2E5C23")
+        /// Primary accent color - dark green
+        static let accent = Color(hex: "0A2903")
 
         /// Light green accent for secondary interactive elements
-        static let accentLight = Color(hex: "A8D578")
+        static let accentLight = Color(hex: "347232")
 
         /// Semantic colors
         static let success = Color(hex: "34C759")

@@ -35,7 +35,7 @@ struct HelpView: View {
                                 Circle()
                                     .fill(DesignSystem.Colors.accent)
                                 Circle()
-                                    .stroke(Color.black, lineWidth: 1.5)
+                                    .stroke(Color.white, lineWidth: 1.5)
                             }
                             .frame(width: 20, height: 20)
 
@@ -54,7 +54,7 @@ struct HelpView: View {
                                 Circle()
                                     .fill(DesignSystem.Colors.accentLight)
                                 Circle()
-                                    .stroke(Color.black, lineWidth: 1)
+                                    .stroke(Color.white, lineWidth: 1)
                             }
                             .frame(width: 16, height: 16)
 

@@ -28,7 +28,7 @@ struct PlayerControlsView: View {
             ) { editing in
                 viewModel.isSeeking = editing
             }
-            .accentColor(DesignSystem.Colors.accent)
+            .tint(DesignSystem.Colors.accent)
 
             Text(formatTime(viewModel.duration))
                 .font(DesignSystem.Typography.caption.monospacedDigit())
@@ -95,7 +95,7 @@ struct BottomBarView: View {
             // Slider + value
             Slider(value: $viewModel.cornerRadius, in: 0...viewModel.maxRadius)
                 .frame(minWidth: 120)
-                .accentColor(DesignSystem.Colors.accent)
+                .tint(DesignSystem.Colors.accent)
 
             TextField("", value: $viewModel.cornerRadius, format: .number.precision(.fractionLength(0)))
                 .textFieldStyle(.roundedBorder)

@@ -103,7 +103,7 @@ struct VideoPreviewView: View {
             Circle()
                 .fill(DesignSystem.Colors.accent)
             Circle()
-                .stroke(Color.black, lineWidth: 1.5)
+                .stroke(Color.white, lineWidth: 1.5)
         }
         .frame(width: handleSize, height: handleSize)
         .shadow(color: .black.opacity(0.4), radius: 3)

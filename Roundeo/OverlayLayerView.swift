@@ -118,7 +118,7 @@ struct ResizeHandle: View {
             Circle()
                 .fill(DesignSystem.Colors.accentLight)
             Circle()
-                .stroke(Color.black, lineWidth: 1)
+                .stroke(Color.white, lineWidth: 1)
         }
         .frame(width: 10, height: 10)
         .position(position)
