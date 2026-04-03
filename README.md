@@ -29,9 +29,6 @@ A macOS app that adds rounded corners to your videos, crops them, and exports wi
 
 ![Before and after — raw recording vs. rounded corners with device frame](assets/screenshot-2.png)
 
-## Tutorial
-
-Coming soon! Check the tutorial steps in the `assets/` folder.
 
 ## Usage
 
