@@ -1,0 +1,5 @@
+OK      Fix the position of the yellow dot when the video is vertical
+OK      Add feature to overlay an image (for example iPhone bezel)
+OK      The video should be resizable in the UI
+OK      When rounding the corner, the control overlay of the video should not be covered
+OK      Add feature to resize and crop the video
