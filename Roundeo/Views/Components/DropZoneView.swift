@@ -6,7 +6,7 @@ struct DropZoneView: View {
 
     var body: some View {
         VStack(spacing: DesignSystem.Spacing.lg) {
-            Image(systemName: "rectangle.roundcorners.fill")
+            Image(systemName: "video.fill.badge.plus")
                 .font(.system(size: 56))
                 .foregroundStyle(isDragTargeted ? .white : .secondary)
 
@@ -18,7 +18,7 @@ struct DropZoneView: View {
                 .font(DesignSystem.Typography.caption)
                 .foregroundStyle(.tertiary)
 
-            Button("Browse Files", action: onBrowse)
+            Button("Browse files", action: onBrowse)
                 .buttonStyle(.bordered)
                 .controlSize(.large)
         }

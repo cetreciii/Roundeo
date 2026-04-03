@@ -51,7 +51,7 @@ struct VideoPreviewView: View {
                     .position(x: geo.displayFrame.midX, y: geo.displayFrame.midY)
 
                     // PNG overlay
-                    if viewModel.overlayImage != nil && !viewModel.isCropMode {
+                    if viewModel.overlayImage != nil {
                         OverlayLayerView(
                             viewModel: viewModel,
                             videoFrame: geo.displayFrame,

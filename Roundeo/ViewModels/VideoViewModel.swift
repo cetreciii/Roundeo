@@ -19,6 +19,8 @@ class VideoViewModel: ObservableObject {
     @Published var currentTime: Double = 0
     @Published var duration: Double = 0
     @Published var showOnboarding: Bool = false
+    @Published var exportWidthText: String = ""
+    @Published var exportHeightText: String = ""
     var isSeeking: Bool = false
 
     // Crop
@@ -252,17 +254,25 @@ class VideoViewModel: ObservableObject {
         let capturedOffset = self.overlayOffset
         let capturedFitted = self.overlayFittedSize
         let capturedOverlayScale = self.overlayScale
+        let capturedOverlayURL = self.overlayURL
         let scaledOverlaySize = CGSize(
             width: capturedFitted.width * capturedOverlayScale,
             height: capturedFitted.height * capturedOverlayScale
         )
-        if let nsImage = self.overlayImage,
-           let cgImage = nsImage.cgImage(forProposedRect: nil, context: nil, hints: nil),
-           capturedFitted.width > 0 {
-            let ci = CIImage(cgImage: cgImage)
-            let sx = scaledOverlaySize.width / ci.extent.width
-            let sy = scaledOverlaySize.height / ci.extent.height
-            overlayCI = ci.transformed(by: CGAffineTransform(scaleX: sx, y: sy))
+        if capturedFitted.width > 0 {
+            // Load via URL for full-resolution access (handles large PNGs that cgImage(forProposedRect:) may fail on)
+            let ci: CIImage? = capturedOverlayURL.flatMap { CIImage(contentsOf: $0) }
+                ?? self.overlayImage.flatMap { nsImage -> CIImage? in
+                    var rect = NSRect(origin: .zero, size: nsImage.size)
+                    return nsImage.cgImage(forProposedRect: &rect, context: nil, hints: nil).map { CIImage(cgImage: $0) }
+                }
+            if let ci = ci {
+                let sx = scaledOverlaySize.width / ci.extent.width
+                let sy = scaledOverlaySize.height / ci.extent.height
+                overlayCI = ci.transformed(by: CGAffineTransform(scaleX: sx, y: sy))
+            } else {
+                overlayCI = nil
+            }
         } else {
             overlayCI = nil
         }
@@ -273,6 +283,16 @@ class VideoViewModel: ObservableObject {
             overlaySize: overlayCI != nil ? scaledOverlaySize : .zero,
             overlayOffset: capturedOffset
         )
+
+        // Determine final render size (custom if set, otherwise natural canvas size)
+        let customW = Int(self.exportWidthText) ?? 0
+        let customH = Int(self.exportHeightText) ?? 0
+        let renderSize: CGSize
+        if customW > 0 && customH > 0 {
+            renderSize = CGSize(width: customW, height: customH)
+        } else {
+            renderSize = canvasSize
+        }
 
         let composition = AVMutableVideoComposition(asset: asset) { request in
             var image = request.sourceImage
@@ -330,9 +350,23 @@ class VideoViewModel: ObservableObject {
                 output = positioned.composited(over: output)
             }
 
+            // Scale to custom render size if requested (fit within bounds, maintain aspect ratio)
+            if renderSize != canvasSize {
+                let sx = renderSize.width / canvasSize.width
+                let sy = renderSize.height / canvasSize.height
+                let s = min(sx, sy)
+                let scaledW = canvasSize.width * s
+                let scaledH = canvasSize.height * s
+                let offsetX = (renderSize.width - scaledW) / 2
+                let offsetY = (renderSize.height - scaledH) / 2
+                output = output
+                    .transformed(by: CGAffineTransform(scaleX: s, y: s))
+                    .transformed(by: CGAffineTransform(translationX: offsetX, y: offsetY))
+            }
+
             request.finish(with: output, context: nil)
         }
-        composition.renderSize = canvasSize
+        composition.renderSize = renderSize
 
         let preset = AVAssetExportPresetHEVCHighestQualityWithAlpha
         guard let session = AVAssetExportSession(asset: asset, presetName: preset) else {

@@ -7,6 +7,7 @@ struct ContentView: View {
     @State private var isDragTargeted = false
     @State private var isShowingHelp = false
     @Binding var showHelp: Bool
+    @Binding var showRatingAlert: Bool
 
     var body: some View {
         ZStack {
@@ -37,7 +38,7 @@ struct ContentView: View {
             }
             ToolbarItem(placement: .primaryAction) {
                 Button(action: { isShowingFilePicker = true }) {
-                    Label("Load video", systemImage: "plus")
+                    Text(viewModel.player == nil ? "Add video" : "Change video")
                 }
             }
         }
@@ -83,6 +84,19 @@ struct ContentView: View {
             .hidden()
         )
         .accentColor(DesignSystem.Colors.accent)
+        .alert("Enjoying Roundeo?", isPresented: $showRatingAlert) {
+            Button("Rate on App Store") {
+                if let url = URL(string: "macappstore://apps.apple.com/app/roundeo") {
+                    NSWorkspace.shared.open(url)
+                }
+            }
+            Button("Remind me later", role: .cancel) { }
+            Button("Don't ask again", role: .destructive) {
+                UserDefaults.standard.set(true, forKey: "ratingPromptDisabled")
+            }
+        } message: {
+            Text("If you're enjoying Roundeo, would you mind leaving a rating on the App Store? It helps me improve!")
+        }
     }
 
     private func loadVideoFromDrop(providers: [NSItemProvider]) {
@@ -104,5 +118,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(showHelp: .constant(false))
+    ContentView(showHelp: .constant(false), showRatingAlert: .constant(false))
 }

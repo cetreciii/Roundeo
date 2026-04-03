@@ -6,7 +6,7 @@ struct VideoPreviewGeometry {
     let cropRect: CGRect?  // nil when in crop mode or no crop active
     let canvasSize: CGSize
 
-    static let padding: CGFloat = 40
+    static let padding: CGFloat = 80
 
     /// The effective size shown in the preview (crop size when active, full video otherwise).
     var activeCropRect: CGRect? {

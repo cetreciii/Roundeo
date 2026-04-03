@@ -45,20 +45,6 @@ struct PlayerControlsView: View {
     }
 }
 
-// MARK: - Radius presets
-
-struct RadiusPreset {
-    let name: String
-    let fraction: Double
-}
-
-let cornerRadiusPresets = [
-    RadiusPreset(name: "Subtle", fraction: 0.06),
-    RadiusPreset(name: "Medium", fraction: 0.15),
-    RadiusPreset(name: "Large", fraction: 0.30),
-    RadiusPreset(name: "Pill", fraction: 1.0),
-]
-
 // MARK: - Bottom bar
 
 struct BottomBarView: View {
@@ -66,27 +52,24 @@ struct BottomBarView: View {
 
     var body: some View {
         HStack(spacing: DesignSystem.Spacing.lg) {
-            // Presets
+            // Export dimensions
             HStack(spacing: DesignSystem.Spacing.xs) {
-                ForEach(cornerRadiusPresets, id: \.name) { preset in
-                    let target = preset.fraction * viewModel.maxRadius
-                    let isActive = abs(viewModel.cornerRadius - target) < 1
-
-                    Button(preset.name) {
-                        withAnimation(DesignSystem.Animations.standard) {
-                            viewModel.cornerRadius = target
-                        }
-                    }
-                    .buttonStyle(.plain)
-                    .font(DesignSystem.Typography.caption.weight(isActive ? .bold : .regular))
-                    .padding(.horizontal, DesignSystem.Spacing.md)
-                    .padding(.vertical, DesignSystem.Spacing.xs)
-                    .background(
-                        Capsule()
-                            .fill(isActive ? DesignSystem.Colors.accent : Color.white.opacity(0.08))
-                    )
-                    .foregroundStyle(isActive ? .white : .secondary)
-                }
+                Text("Size")
+                    .font(DesignSystem.Typography.caption)
+                    .foregroundStyle(.secondary)
+                TextField("W", text: $viewModel.exportWidthText)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(width: 56)
+                    .multilineTextAlignment(.trailing)
+                Text("×")
+                    .font(DesignSystem.Typography.caption)
+                    .foregroundStyle(.secondary)
+                TextField("H", text: $viewModel.exportHeightText)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(width: 56)
+                Text("px")
+                    .font(DesignSystem.Typography.caption)
+                    .foregroundStyle(.tertiary)
             }
 
             Divider()

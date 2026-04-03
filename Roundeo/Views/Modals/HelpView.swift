@@ -17,10 +17,12 @@ struct HelpView: View {
 
                 Section {
                     VStack(alignment: .leading, spacing: DesignSystem.Spacing.md) {
-                        helpStep("1. Load a video", "Drag and drop a video into the window, or click the + button to browse your files.")
-                        helpStep("2. Adjust corners", "Use the presets (Subtle, Medium, Large, Pill) or drag the slider. The dark green circle lets you fine-tune corner radius visually.")
-                        helpStep("3. Add a frame (optional)", "Click 'Add Frame' in the bottom bar to overlay a PNG device frame. Drag to position, use the light green corner handles to resize.")
-                        helpStep("4. Export", "Click Export to save your video as a .mov file with transparent rounded corners.")
+                        helpStep("1. Load a video", "Drag and drop a video into the window, or click 'Add video' in the toolbar to browse your files.")
+                        helpStep("2. Adjust corners", "Drag the slider or type a value in the field. The dark green circle on the video lets you fine-tune the corner radius visually.")
+                        helpStep("3. Crop (optional)", "Click 'Crop' in the bottom bar, drag the corner handles to select a region, then click Apply.")
+                        helpStep("4. Add a frame (optional)", "Click 'Add Frame' in the bottom bar to overlay a PNG device frame. Drag to position; use the light green corner handles to resize. The frame stays visible while cropping.")
+                        helpStep("5. Set export size (optional)", "Type a width and height in the Size fields in the bottom bar. Leave them empty to export at the video's natural resolution.")
+                        helpStep("6. Export", "Click Export to save your video as a .mov file with transparent rounded corners.")
                     }
                 } header: {
                     Text("How to use").font(DesignSystem.Typography.heading3)
@@ -77,7 +79,8 @@ struct HelpView: View {
                 Section {
                     VStack(alignment: .leading, spacing: DesignSystem.Spacing.md) {
                         helpTip("Snap guides", "When dragging an overlay, green lines appear when it snaps to the video's horizontal or vertical center.")
-                        helpTip("Resize with precision", "Click on a light green dot and resize your frame as you want, Roundeo can do it.")
+                        helpTip("Resize with precision", "Drag any light green corner handle to scale the frame proportionally.")
+                        helpTip("Custom export size", "Use the Size fields (e.g. 1920 × 1080) to scale the output. The video is fitted within the requested dimensions while preserving its aspect ratio.")
                         helpTip("Transparency", "The checkerboard pattern shows where transparency will be in the exported video.")
                         helpTip("Video aspect ratios", "Roundeo handles videos of any size: vertical, horizontal, square, and everything in between.")
                     }
