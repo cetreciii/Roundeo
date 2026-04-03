@@ -1,7 +1,7 @@
-![Roundeo banner](Assets/Notion/Banner.png)
+![Roundeo banner](assets/banner.png)
 
 <p align="center">
-  <img src="Assets/AppIcon/AppIconComposer-iOS-Default-1024x1024@1x.png" width="120" alt="Roundeo app icon" />
+  <img src="assets/app-icon.png" width="120" alt="Roundeo app icon" />
 </p>
 
 # Roundeo
@@ -25,11 +25,13 @@ A macOS app that adds rounded corners to your videos, crops them, and exports wi
 
 ## Screenshots
 
-![Roundeo drop zone — the app's landing state](Assets/Product%20page/Screenshots/Screenshot%201.png)
+![Roundeo editor — video loaded with device frame overlay and controls](assets/screenshot-1.png)
 
-![Roundeo editor — video loaded with device frame overlay and controls](Assets/Product%20page/Screenshots/Screenshot%202.png)
+![Before and after — raw recording vs. rounded corners with device frame](assets/screenshot-2.png)
 
-![Before and after — raw recording vs. rounded corners with device frame](Assets/Product%20page/Screenshots/Screenshot%203.png)
+## Tutorial
+
+Coming soon! Check the tutorial steps in the `assets/` folder.
 
 ## Usage
 
