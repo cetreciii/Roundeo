@@ -80,8 +80,6 @@ git clone https://github.com/your-username/Roundeo.git
 
 Open `Roundeo.xcodeproj` in Xcode and run (`Cmd+R`).
 
-## License
-
-MIT
+---
 
 *Source code is private and maintained by the developer.*
