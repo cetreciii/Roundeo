@@ -36,24 +36,31 @@ Coming soon! Check the tutorial steps in the `assets/` folder.
 ## Usage
 
 1. **Load a video** - Drag and drop into the window, or click **Add video** in the toolbar to browse.
+
    ![Step 1](assets/step%201.png)
 
 2. **Set corner radius** - Use the slider, numeric field, or drag the dark green handle directly on the video.
+
    ![Step 2 - Set corner radius](assets/step%202.png)
 
 3. **Crop (optional)** - Click **Crop** in the bottom bar, drag the corner handles to select a region, then click **Apply**.
+
    ![Step 3 - Crop](assets/step%203.png)
 
 4. **Add a frame (optional)** - Click **Add Frame** to overlay a PNG device frame. Drag to reposition (snaps to center); drag corner handles to resize.
+
    ![Step 4](assets/step%204.png)
 
 5. **Set export size (optional)** - Enter a width and height in the **Size** fields in the bottom bar (e.g. 1920 and 1080). Leave blank to use the video's natural size.
+
    ![Step 5](assets/step%205.png)
 
 6. **Export** - Click **Export** to save as a `.mov` file with transparent rounded corners.
+
    ![Step 6](assets/step%206.png)
 
 7. **Change video** - Press the **Change video** button to load a different video and repeat the process.
+
    ![Step 7 - Change video](assets/step%207.png)
 
 ## Export format
