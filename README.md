@@ -83,3 +83,5 @@ Open `Roundeo.xcodeproj` in Xcode and run (`Cmd+R`).
 ## License
 
 MIT
+
+*Source code is private and maintained by the developer.*
