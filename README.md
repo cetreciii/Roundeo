@@ -62,7 +62,7 @@ A macOS app that adds rounded corners to your videos, crops them, and exports wi
 
 ## Export format
 
-Videos are exported as `.mov` with the HEVC codec and an alpha channel. This means rounded corners and cropped edges are truly transparent — ready to use in presentations, social media, or video editing tools that support transparency.
+Videos are exported as `.mov` with the HEVC codec and an alpha channel. This means rounded corners and cropped edges are truly transparent and ready to use in presentations, social media, or video editing tools that support transparency.
 
 ## Requirements
 
@@ -72,7 +72,7 @@ Videos are exported as `.mov` with the HEVC codec and an alpha channel. This mea
 ## Building
 
 ```bash
-git clone https://github.com/your-username/Roundeo.git
+git clone https://github.com/cetreciii/Roundeo.git
 ```
 
 Open `Roundeo.xcodeproj` in Xcode and run (`Cmd+R`).
