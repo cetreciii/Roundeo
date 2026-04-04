@@ -27,22 +27,22 @@ struct OnboardingView: View {
                 VStack(alignment: .leading, spacing: DesignSystem.Spacing.lg) {
                     OnboardingStep(
                         number: 1,
-                        title: "Drop a video",
-                        description: "Drag and drop your video into the window, or click + to browse.",
+                        title: "Load a video",
+                        description: "Drag and drop a video into the window, or use the Add video button in the toolbar.",
                         icon: "arrow.down.doc"
                     )
 
                     OnboardingStep(
                         number: 2,
-                        title: "Adjust corners",
-                        description: "Pick a preset or fine-tune with the slider and the yellow handle.",
+                        title: "Customize",
+                        description: "Adjust corner radius with the slider, crop to any region, and optionally add a device frame overlay.",
                         icon: "slider.horizontal.3"
                     )
 
                     OnboardingStep(
                         number: 3,
                         title: "Export",
-                        description: "Export your video with transparent rounded corners. Works with any aspect ratio.",
+                        description: "Export as .mov with true transparency and HEVC codec. Set custom dimensions or use the video's natural size.",
                         icon: "square.and.arrow.up"
                     )
                 }
