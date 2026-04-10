@@ -8,11 +8,11 @@ struct DropZoneView: View {
         VStack(spacing: DesignSystem.Spacing.lg) {
             Image(systemName: "video.fill.badge.plus")
                 .font(.system(size: 56))
-                .foregroundStyle(isDragTargeted ? .white : .secondary)
+                .foregroundStyle(isDragTargeted ? Color.primary : Color.secondary)
 
             Text("Drop a video here")
                 .font(DesignSystem.Typography.heading2)
-                .foregroundStyle(isDragTargeted ? .white : .secondary)
+                .foregroundStyle(isDragTargeted ? Color.primary : Color.secondary)
 
             Text("or")
                 .font(DesignSystem.Typography.caption)
@@ -28,7 +28,7 @@ struct DropZoneView: View {
                 .strokeBorder(
                     style: StrokeStyle(lineWidth: DesignSystem.Borders.medium, dash: [8, 4])
                 )
-                .foregroundStyle(isDragTargeted ? DesignSystem.Colors.accent : Color.white.opacity(0.15))
+                .foregroundStyle(isDragTargeted ? DesignSystem.Colors.accent : DesignSystem.Colors.border)
                 .padding(DesignSystem.Spacing.xl)
         }
         .background(DesignSystem.Colors.canvasBackground)

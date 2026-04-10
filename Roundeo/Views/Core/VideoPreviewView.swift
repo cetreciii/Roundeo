@@ -25,7 +25,7 @@ struct VideoPreviewView: View {
                 )
 
                 ZStack {
-                    // Dark canvas
+                    // Canvas background
                     DesignSystem.Colors.canvasBackground
 
                     // Checkerboard at video rect (shows through rounded corners)

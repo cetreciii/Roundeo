@@ -44,7 +44,6 @@ struct HelpView: View {
                             VStack(alignment: .leading, spacing: DesignSystem.Spacing.xs) {
                                 Text("Dark green circle")
                                     .font(DesignSystem.Typography.bodyEmphasis)
-                                    .foregroundStyle(.white)
                                 Text("Appears at the top of your video. Drag it left or right to adjust the corner radius in real-time.")
                                     .font(DesignSystem.Typography.caption)
                                     .foregroundStyle(.secondary)
@@ -63,7 +62,6 @@ struct HelpView: View {
                             VStack(alignment: .leading, spacing: DesignSystem.Spacing.xs) {
                                 Text("Light green circles")
                                     .font(DesignSystem.Typography.bodyEmphasis)
-                                    .foregroundStyle(.white)
                                 Text("Appear at the corners of your overlay frame. Drag them to resize the frame proportionally.")
                                     .font(DesignSystem.Typography.caption)
                                     .foregroundStyle(.secondary)
@@ -123,7 +121,6 @@ struct HelpView: View {
         VStack(alignment: .leading, spacing: DesignSystem.Spacing.xs) {
             Text(title)
                 .font(DesignSystem.Typography.bodyEmphasis)
-                .foregroundStyle(.white)
             Text(description)
                 .font(DesignSystem.Typography.caption)
                 .foregroundStyle(.secondary)
@@ -134,7 +131,7 @@ struct HelpView: View {
         VStack(alignment: .leading, spacing: DesignSystem.Spacing.xs) {
             Text(title)
                 .font(DesignSystem.Typography.captionEmphasis)
-                .foregroundStyle(DesignSystem.Colors.accent)
+                .foregroundStyle(DesignSystem.Colors.accentText)
             Text(description)
                 .font(DesignSystem.Typography.caption)
                 .foregroundStyle(.secondary)

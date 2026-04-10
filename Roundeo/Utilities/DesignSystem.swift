@@ -18,22 +18,36 @@ struct DesignSystem {
         static let warning = Color(hex: "FF9500")
         static let error = Color(hex: "FF3B30")
 
-        /// Neutral colors
-        static let background = Color(white: 0.95)
-        static let surfacePrimary = Color(white: 0.98)
-        static let surfaceSecondary = Color(white: 0.92)
-        static let canvasBackground = Color(white: 0.12)
-        static let border = Color(white: 0.2)
+        /// Neutral colors — adaptive to light/dark mode
+        static let background = Color(nsColor: .windowBackgroundColor)
+        static let surfacePrimary = Color(nsColor: .controlBackgroundColor)
+        static let surfaceSecondary = Color(nsColor: .underPageBackgroundColor)
+        /// Canvas background: dark in dark mode, neutral light gray in light mode
+        static let canvasBackground = Color(nsColor: NSColor(name: nil) { appearance in
+            appearance.bestMatch(from: [.aqua, .darkAqua]) == .darkAqua
+                ? NSColor(white: 0.12, alpha: 1)
+                : NSColor(white: 0.87, alpha: 1)
+        })
+        static let border = Color(nsColor: .separatorColor)
 
-        /// Text colors
-        static let textPrimary = Color(white: 0.1)
-        static let textSecondary = Color(white: 0.4)
-        static let textTertiary = Color(white: 0.6)
+        /// Text colors — adaptive to light/dark mode
+        static let textPrimary = Color(nsColor: .labelColor)
+        static let textSecondary = Color(nsColor: .secondaryLabelColor)
+        static let textTertiary = Color(nsColor: .tertiaryLabelColor)
+        /// Inverse text is intentionally always light, for use on dark canvas backgrounds
         static let textInverse = Color(white: 0.95)
 
-        /// Interactive states
-        static let buttonHover = Color(white: 0.88)
-        static let buttonActive = Color(white: 0.82)
+        /// Adaptive accent text: dark green in light mode, light green in dark mode.
+        /// Use this when rendering accent-colored text on a system-adaptive background.
+        static let accentText = Color(nsColor: NSColor(name: nil) { appearance in
+            appearance.bestMatch(from: [.aqua, .darkAqua]) == .darkAqua
+                ? NSColor(red: 0.49, green: 0.86, blue: 0.49, alpha: 1)  // light green for dark mode
+                : NSColor(red: 0.039, green: 0.161, blue: 0.012, alpha: 1) // #0A2903 for light mode
+        })
+
+        /// Interactive states — adaptive
+        static let buttonHover = Color(nsColor: .controlColor)
+        static let buttonActive = Color(nsColor: .selectedControlColor)
         static let disabledOverlay = Color(white: 0.0).opacity(0.4)
     }
 

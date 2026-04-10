@@ -11,14 +11,14 @@ struct OnboardingView: View {
             VStack(spacing: DesignSystem.Spacing.xl2) {
                 Spacer()
 
-                Image(systemName: "rectangle.roundcorners.fill")
-                    .font(.system(size: 72))
-                    .foregroundStyle(DesignSystem.Colors.accent)
+//                Image(systemName: "app-icon")
+//                    .font(.system(size: 72))
+//                    .foregroundStyle(DesignSystem.Colors.accent)
 
                 VStack(spacing: DesignSystem.Spacing.md) {
                     Text("Welcome to Roundeo")
                         .font(.system(.title, design: .rounded).weight(.bold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                     Text("Transform your videos with rounded corners")
                         .font(DesignSystem.Typography.heading2)
                         .foregroundStyle(.secondary)
@@ -47,7 +47,7 @@ struct OnboardingView: View {
                     )
                 }
                 .padding(DesignSystem.Spacing.xl)
-                .background(Color.white.opacity(0.06))
+                .background(Color.primary.opacity(0.06))
                 .cornerRadius(DesignSystem.CornerRadius.xl)
 
                 Spacer()
@@ -58,7 +58,7 @@ struct OnboardingView: View {
                         showOnboarding = false
                     }
                 }) {
-                    Text("Get Started")
+                    Text("Get started")
                         .font(DesignSystem.Typography.heading3)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, DesignSystem.Spacing.md)
@@ -95,10 +95,10 @@ struct OnboardingStep: View {
                 HStack(spacing: DesignSystem.Spacing.xs) {
                     Text(title)
                         .font(DesignSystem.Typography.heading3)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                     Image(systemName: icon)
                         .font(DesignSystem.Typography.caption)
-                        .foregroundStyle(DesignSystem.Colors.accent)
+                        .foregroundStyle(DesignSystem.Colors.accentText)
                 }
                 Text(description)
                     .font(DesignSystem.Typography.body)
